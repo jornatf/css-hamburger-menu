@@ -1,0 +1,119 @@
+/*! CSS Hamburger menu
+ * https://github.com/jornatf/css-hamburger-menu
+ * Copyright (c) 2022 Jordan Nataf
+ * Licensed MIT
+ *
+ */
+
+.hamburger-menu {
+    display: block;
+    position: fixed;
+    top: 23px;
+    right: 23px;
+    z-index: 9999999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+/* Checkbox to show/hide menu */
+
+.hamburger-menu .toggle-menu {
+    display: block;
+    width: 40px;
+    height: 35px;
+    position: absolute;
+    top: -15px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 99999999;
+    -webkit-touch-callout: none;
+}
+
+/*
+ * Hamburger button with animation
+ * when checkbox changes
+ */
+
+.hamburger-menu span {
+    display: block;
+    width: 33px;
+    height: 3px;
+    margin-bottom: 6px;
+    position: relative;
+    background: #191919;
+    opacity: .4;
+    border-radius: 3px;
+    z-index: 9999999;
+    transform-origin: 4px 0px;
+    transition: transform .5s cubic-bezier(.77,.2,.05,1.0), opacity .55s ease;
+}
+
+.hamburger-menu span:first-child {
+transform-origin: 0% 0%;
+}
+
+.hamburger-menu span:nth-last-child(2) {
+transform-origin: 0% 100%;
+}
+
+.hamburger-menu .toggle-menu:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+}
+
+.hamburger-menu .toggle-menu:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(.2, .2);
+}
+
+.hamburger-menu .toggle-menu:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Menu and animation
+ * when checkbox changes
+ */
+
+.hamburger-menu .menu {
+    position: fixed;
+    width: 300px;
+    top: 0;
+    right: -350px;
+    bottom: 0;
+    margin: 0;
+    padding: 80px 0 50px;
+    opacity: 0;
+    overflow-y: auto;
+    background: #ffffff;
+    list-style-type: none;
+    transition: right .5s cubic-bezier(.77,.2,.05,1.0), opacity .5s ease-in-out;
+    box-shadow: 10px 0 20px rgba(0,0,0,.05);
+}
+
+.hamburger-menu .menu li {
+    padding: 0;
+    font-size: 20px;
+}
+
+.hamburger-menu .menu a {
+    color: #191919;
+    font-weight: bold;
+    display: block;
+    background-color: transparent;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: border-color .3s ease-in-out;
+}
+
+.hamburger-menu .menu a:hover {
+    border-color: #191919;
+}
+
+ .hamburger-menu .toggle-menu:checked ~ .menu {
+    right: 0;
+    opacity: 1;
+}
